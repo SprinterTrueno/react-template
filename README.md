@@ -778,7 +778,7 @@ package.json
   },
 }
 ```
-
+[点我跳转到：测试2](#webpack-dev-server)
 webpack.config.js
 ```javascript
 // ...
@@ -787,7 +787,8 @@ module.exports = (env) => {
   
   return {
     // ...
-    mode: NODE_ENV 
+    mode: NODE_ENV
+    // 这里要把 webpack-dev-server 相关的配置临时注释掉，因为 production 模式不支持其相关配置。
   };
 };
 ```
