@@ -644,7 +644,7 @@ module.exports = {
 
 现在我们再尝试一下，控制台现在显示的错误为：console.logs is not a function at App (App.tsx:6:11)。现在我们得到了准确的错误信息，这会非常有助于我们快速定位问题所在的位置。
 
-### 使用 webpack-dev-server
+### webpack-dev-server
 
 在每次编译代码时，手动运行 pnpm webpack 会显得很麻烦，我们可以借助 [webpack-dev-server](https://github.com/webpack/webpack-dev-server) 在代码发生变化后自动编译代码。
 
@@ -778,7 +778,7 @@ package.json
   },
 }
 ```
-[点我跳转到：测试2](#使用 webpack-dev-server)
+[点我跳转到：测试2](#webpack-dev-server)
 
 webpack.config.js
 ```javascript
