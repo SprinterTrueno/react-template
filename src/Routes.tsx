@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router";
 import Homepage from "@/pages/Homepage";
 import NotFound from "@/pages/NotFound";
 

@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 import { ErrorBoundary } from "react-error-boundary";
 import { ConfigProvider } from "antd";
 import zhCN from "antd/es/locale/zh_CN";
