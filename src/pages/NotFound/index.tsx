@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { useNavigate } from "react-router";
 import { Button, Result } from "antd";
 
-const NotFound: FC = () => {
+const NotFound = () => {
   const navigate = useNavigate();
 
   return (

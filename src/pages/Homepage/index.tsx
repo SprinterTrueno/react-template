@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { Result } from "antd";
 import ReactCartoonLogo from "@/assets/images/react-cartoon-logo.png";
 
-const Homepage: FC = () => {
+const Homepage = () => {
   return (
     <Result
       style={{ paddingTop: "15vh" }}
