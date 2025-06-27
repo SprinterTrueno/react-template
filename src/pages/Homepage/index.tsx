@@ -1,12 +1,17 @@
 import { Result } from "antd";
 import ReactCartoonLogo from "@/assets/images/react-cartoon-logo.png";
+import styles from "./index.module.less";
 
 const Homepage = () => {
   return (
     <Result
-      style={{ paddingTop: "15vh" }}
+      className={styles.result}
       icon={
-        <img src={ReactCartoonLogo} width={391} alt="react-cartoon-logo.png" />
+        <img
+          className={styles.logo}
+          src={ReactCartoonLogo}
+          alt="react-cartoon-logo.png"
+        />
       }
       title="The library for web and native user interfaces"
     />

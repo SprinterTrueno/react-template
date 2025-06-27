@@ -6,6 +6,7 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const px2vwPlugin = require("./src/styles/px2vw");
 
 const { NODE_ENV } = process.env;
 
@@ -93,7 +94,14 @@ module.exports = {
               },
             },
           },
-          "less-loader",
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                plugins: [px2vwPlugin],
+              },
+            },
+          },
         ],
       },
       {
