@@ -1,8 +1,18 @@
+import { useEffect } from "react";
 import { Result } from "antd";
 import ReactCartoonLogo from "@/assets/images/react-cartoon-logo.png";
+import { useApp, useAppDispatch } from "@/context/AppContext";
 import styles from "./index.module.less";
 
 const Homepage = () => {
+  const app = useApp();
+  const appDispatch = useAppDispatch();
+
+  useEffect(() => {
+    appDispatch({ type: "editName", payload: "React Cartoon" });
+    console.log(app);
+  }, [app, appDispatch]);
+
   return (
     <Result
       className={styles.result}

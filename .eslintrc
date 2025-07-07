@@ -28,21 +28,47 @@
       }
     }
   },
-  "ignorePatterns": ["react-app-env.d.ts"],
+  "ignorePatterns": [
+    "react-app-env.d.ts"
+  ],
   "rules": {
     // 允许以下文件类型在引入的时候不加扩展名。
     "import/extensions": [
       "error",
       "ignorePackages",
-      { "js": "never", "jsx": "never", "ts": "never", "tsx": "never" }
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    // 允许修改函数参数 draft。
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "draft"
+        ]
+      }
     ],
     // 指定命名函数组件的定义风格为箭头函数。
     "react/function-component-definition": [
       "error",
-      { "namedComponents": "arrow-function" }
+      {
+        "namedComponents": "arrow-function"
+      }
     ],
     // 允许包含 JSX 的文件扩展名。
-    "react/jsx-filename-extension": ["error", { "extensions": ["tsx"] }],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          "tsx"
+        ]
+      }
+    ],
     // 使用 JSX 时允许缺少 React。
     "react/react-in-jsx-scope": "off",
     // 使用未使用的变量进行警告。
@@ -51,7 +77,9 @@
   // 根据文件扩展名应用不同的规则集。
   "overrides": [
     {
-      "files": ["*.js"],
+      "files": [
+        "*.js"
+      ],
       "rules": {
         // 允许调用 require()。
         "@typescript-eslint/no-require-imports": "off"
