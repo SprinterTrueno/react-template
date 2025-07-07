@@ -20,7 +20,7 @@ module.exports = {
   output: {
     clean: true,
     filename: "[name].[contenthash:8].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist")
   },
   module: {
     rules: [
@@ -31,12 +31,12 @@ module.exports = {
         options: {
           presets: [
             "@babel/preset-env",
-            ["@babel/preset-react", { runtime: "automatic" }],
+            ["@babel/preset-react", { runtime: "automatic" }]
           ],
           plugins: [
-            DEVELOPMENT_ENV && require.resolve("react-refresh/babel"),
-          ].filter(Boolean),
-        },
+            DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
+          ].filter(Boolean)
+        }
       },
       {
         test: /\.ts$/i,
@@ -45,9 +45,9 @@ module.exports = {
         options: {
           presets: ["@babel/preset-env", "@babel/preset-typescript"],
           plugins: [
-            DEVELOPMENT_ENV && require.resolve("react-refresh/babel"),
-          ].filter(Boolean),
-        },
+            DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
+          ].filter(Boolean)
+        }
       },
       {
         test: /\.tsx$/i,
@@ -57,12 +57,12 @@ module.exports = {
           presets: [
             "@babel/preset-env",
             ["@babel/preset-react", { runtime: "automatic" }],
-            "@babel/preset-typescript",
+            "@babel/preset-typescript"
           ],
           plugins: [
-            DEVELOPMENT_ENV && require.resolve("react-refresh/babel"),
-          ].filter(Boolean),
-        },
+            DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
+          ].filter(Boolean)
+        }
       },
       {
         test: /\.css$/i,
@@ -74,11 +74,11 @@ module.exports = {
               modules: {
                 auto: true,
                 localIdentName: "[local]__[hash:base64:5]",
-                namedExport: false,
-              },
-            },
-          },
-        ],
+                namedExport: false
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.less$/i,
@@ -90,30 +90,30 @@ module.exports = {
               modules: {
                 auto: true,
                 localIdentName: "[local]__[hash:base64:5]",
-                namedExport: false,
-              },
-            },
+                namedExport: false
+              }
+            }
           },
           {
             loader: "less-loader",
             options: {
               lessOptions: {
-                plugins: [px2vwPlugin],
-              },
-            },
-          },
-        ],
+                plugins: [px2vwPlugin]
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.(jpe?g|png|gif|svg|bpm)$/i,
-        type: "asset",
-      },
-    ],
+        type: "asset"
+      }
+    ]
   },
   resolve: {
     alias: { "@": path.resolve(__dirname, "src") },
     // webpack 会尝试按顺序解析，所以应该尽可能减少匹配次数，以提高性能。
-    extensions: [".js", ".ts", ".tsx", ".jsx"],
+    extensions: [".js", ".ts", ".tsx", ".jsx"]
   },
   devtool: DEVELOPMENT_ENV ? "eval-cheap-module-source-map" : false,
   cache: { type: "filesystem" },
@@ -121,12 +121,12 @@ module.exports = {
     client: { overlay: false },
     historyApiFallback: true,
     port: PORT,
-    static: false,
+    static: false
   },
   plugins: [
     new IgnorePlugin({
       resourceRegExp: /^\.\/locale$/,
-      contextRegExp: /dayjs$/,
+      contextRegExp: /dayjs$/
     }),
     new HtmlWebpackPlugin({
       template: "public/index.html",
@@ -141,22 +141,22 @@ module.exports = {
             keepClosingSlash: true,
             minifyJS: true,
             minifyCSS: true,
-            minifyURLs: true,
+            minifyURLs: true
           }
-        : false,
+        : false
     }),
     DEVELOPMENT_ENV && new CaseSensitivePathsPlugin(),
     DEVELOPMENT_ENV && new ReactRefreshWebpackPlugin({ overlay: false }),
     PRODUCTION_ENV &&
       new MiniCssExtractPlugin({
-        filename: "[name].[contenthash:8].css",
-      }),
+        filename: "[name].[contenthash:8].css"
+      })
   ].filter(Boolean),
   optimization: {
     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
     splitChunks: {
       chunks: "all",
-      name: "vendors",
-    },
-  },
+      name: "vendors"
+    }
+  }
 };

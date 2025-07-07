@@ -7,5 +7,5 @@ module.exports = {
     functions.add("px2vh", (px) => {
       return `${(px.value / 1080) * 100}vh`;
     });
-  },
+  }
 };

@@ -22,7 +22,7 @@ const Fallback = () => {
           onClick={() => navigate("/", { replace: true })}
         >
           Back Home
-        </Button>,
+        </Button>
       ]}
     >
       <Paragraph>

@@ -10,7 +10,7 @@ const initialState: App = {
   name: "React App",
   version: "1.0.0",
   description: "A simple React App",
-  author: "war3_th000",
+  author: "war3_th000"
 };
 
 const AppContext = createContext<App>(null);

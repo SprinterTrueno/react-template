@@ -8,9 +8,9 @@ const router = createBrowserRouter([
     ErrorBoundary: Fallback,
     children: [
       { index: true, Component: Homepage },
-      { path: "*", Component: NotFound },
-    ],
-  },
+      { path: "*", Component: NotFound }
+    ]
+  }
 ]);
 
 export default router;
