@@ -15,7 +15,7 @@
     "plugin:prettier/recommended"
   ],
   // 将 TypeScript 转换为与 ESTree 格式兼容的解析器，好可以在 ESLint 中使用。
-  "parser": "@typescript-eslint/parser",
+  // "parser": "@typescript-eslint/parser",
   "settings": {
     "import/resolver": {
       "webpack": {

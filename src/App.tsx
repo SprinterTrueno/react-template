@@ -8,6 +8,10 @@ import router from "./router";
 import "normalize.css";
 
 const App = () => {
+  console.log("App");
+
+  const a: string = "1";
+
   return (
     <ConfigProvider locale={zhCN}>
       <AntdApp>
