@@ -25,88 +25,103 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?x$/i,
-        loader: "babel-loader",
-        include: /src/,
-        options: {
-          presets: [
-            "@babel/preset-env",
-            ["@babel/preset-react", { runtime: "automatic" }]
-          ],
-          plugins: [
-            DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
-          ].filter(Boolean)
-        }
-      },
-      {
-        test: /\.ts$/i,
-        loader: "babel-loader",
-        include: /src/,
-        options: {
-          presets: ["@babel/preset-env", "@babel/preset-typescript"],
-          plugins: [
-            DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
-          ].filter(Boolean)
-        }
-      },
-      {
-        test: /\.tsx$/i,
-        loader: "babel-loader",
-        include: /src/,
-        options: {
-          presets: [
-            "@babel/preset-env",
-            ["@babel/preset-react", { runtime: "automatic" }],
-            "@babel/preset-typescript"
-          ],
-          plugins: [
-            DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
-          ].filter(Boolean)
-        }
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          DEVELOPMENT_ENV ? "style-loader" : MiniCssExtractPlugin.loader,
+        oneOf: [
           {
-            loader: "css-loader",
+            test: /\.js$/i,
+            loader: "babel-loader",
+            include: /src/,
             options: {
-              modules: {
-                auto: true,
-                localIdentName: "[local]__[hash:base64:5]",
-                namedExport: false
-              }
-            }
-          }
-        ]
-      },
-      {
-        test: /\.less$/i,
-        use: [
-          DEVELOPMENT_ENV ? "style-loader" : MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                auto: true,
-                localIdentName: "[local]__[hash:base64:5]",
-                namedExport: false
-              }
+              presets: ["@babel/preset-env"],
+              plugins: [
+                DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
+              ].filter(Boolean)
             }
           },
           {
-            loader: "less-loader",
+            test: /\.jsx$/i,
+            loader: "babel-loader",
+            include: /src/,
             options: {
-              lessOptions: {
-                plugins: [px2vwPlugin]
-              }
+              presets: [
+                "@babel/preset-env",
+                ["@babel/preset-react", { runtime: "automatic" }]
+              ],
+              plugins: [
+                DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
+              ].filter(Boolean)
             }
+          },
+          {
+            test: /\.ts$/i,
+            loader: "babel-loader",
+            include: /src/,
+            options: {
+              presets: ["@babel/preset-env", "@babel/preset-typescript"],
+              plugins: [
+                DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
+              ].filter(Boolean)
+            }
+          },
+          {
+            test: /\.tsx$/i,
+            loader: "babel-loader",
+            include: /src/,
+            options: {
+              presets: [
+                "@babel/preset-env",
+                ["@babel/preset-react", { runtime: "automatic" }],
+                "@babel/preset-typescript"
+              ],
+              plugins: [
+                DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
+              ].filter(Boolean)
+            }
+          },
+          {
+            test: /\.css$/i,
+            use: [
+              DEVELOPMENT_ENV ? "style-loader" : MiniCssExtractPlugin.loader,
+              {
+                loader: "css-loader",
+                options: {
+                  modules: {
+                    auto: true,
+                    localIdentName: "[local]__[hash:base64:5]",
+                    namedExport: false
+                  }
+                }
+              }
+            ]
+          },
+          {
+            test: /\.less$/i,
+            use: [
+              DEVELOPMENT_ENV ? "style-loader" : MiniCssExtractPlugin.loader,
+              {
+                loader: "css-loader",
+                options: {
+                  modules: {
+                    auto: true,
+                    localIdentName: "[local]__[hash:base64:5]",
+                    namedExport: false
+                  }
+                }
+              },
+              {
+                loader: "less-loader",
+                options: {
+                  lessOptions: {
+                    plugins: [px2vwPlugin]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            test: /\.(jpe?g|png|gif|svg|bpm)$/i,
+            type: "asset"
           }
         ]
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg|bpm)$/i,
-        type: "asset"
       }
     ]
   },
