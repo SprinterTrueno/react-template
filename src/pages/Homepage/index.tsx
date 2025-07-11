@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Result } from "antd";
+import { Result, Button } from "antd";
 import ReactCartoonLogo from "@/assets/images/react-cartoon-logo.png";
 import { useApp, useAppDispatch } from "@/context/AppContext";
 import styles from "./index.module.less";
