@@ -6,6 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve",
     "build": "cross-env NODE_ENV=production webpack",
+    "inspect-eslint-config": "eslint --inspect-config",
     "tree": "treee -a -I \".idea|.git|node_modules|dist\"",
     "prepare": "husky"
   },
@@ -39,6 +40,7 @@
     "eslint": "^9.30.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^10.1.5",
+    "eslint-import-resolver-webpack": "^0.13.10",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.1",

@@ -4,6 +4,7 @@ export default {
   /* env: {
     node: true
   }, */
+  name: "node",
   languageOptions: { globals: globals.node },
   rules: {
     // enforces error handling in callbacks (node environment)

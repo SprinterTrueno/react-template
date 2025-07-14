@@ -2,6 +2,7 @@
 // const eslintPkg = require('eslint/package.json');
 
 export default {
+  name: "style",
   rules: {
     // require camel case names
     camelcase: ["error", { properties: "never", ignoreDestructuring: false }],

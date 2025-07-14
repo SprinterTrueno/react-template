@@ -15,6 +15,7 @@ export default {
       jsx: true,
     },
   }, */
+  name: "eslint-plugin-react",
   plugins: {
     react
   },

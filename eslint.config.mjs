@@ -1,19 +1,14 @@
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import airbnbBase from "./test/airbnb-base/index.mjs";
-import react from "./test/react.mjs";
-import reactA11y from "./test/react-a11y.mjs";
 import reactHooks from "eslint-plugin-react-hooks";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintConfigAirbnb from "./test/index.mjs";
 
 export default tseslint.config(
   {
     languageOptions: { globals: globals.browser }
   },
-  // tseslint.configs.recommended,
-  airbnbBase,
-  react,
-  reactA11y,
+  eslintConfigAirbnb,
   reactHooks.configs["recommended-latest"],
   tseslint.configs.strict,
   eslintPluginPrettierRecommended,
@@ -21,9 +16,20 @@ export default tseslint.config(
     ignores: ["src/react-app-env.d.ts"]
   },
   {
+    settings: {
+      "import/resolver": {
+        webpack: {
+          // 这里的 config 就是我们 webpack 配置文件中的 resolve。
+          // 如果你的 webpack.config.js 导出的不是一个对象而是一个函数，
+          // 你需要引入webpack.config.js，然后执行它：
+          // const webpackConfig = require("./webpack.config");
+          // config: webpackConfig("development")
+          config: "webpack.config.js"
+        }
+      }
+    },
     rules: {
-      // 允许以下文件类型在引入的时候不加扩展名。
-      /* "import/extensions": [
+      "import/extensions": [
         "error",
         "ignorePackages",
         {
@@ -32,7 +38,7 @@ export default tseslint.config(
           ts: "never",
           tsx: "never"
         }
-      ], */
+      ],
       // 允许修改函数参数 draft。
       "no-param-reassign": [
         "error",
@@ -58,7 +64,14 @@ export default tseslint.config(
       // 使用 JSX 时允许缺少 React。
       "react/react-in-jsx-scope": "off",
       // 使用未使用的变量进行警告。
-      "@typescript-eslint/no-unused-vars": "warn"
+      "@typescript-eslint/no-unused-vars": "warn",
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          devDependencies: ["eslint.config.mjs", "test/**/*"],
+          optionalDependencies: false
+        }
+      ]
     }
   },
   {
@@ -68,5 +81,3 @@ export default tseslint.config(
     }
   }
 );
-
-// pnpm dlx eslint --inspect-config

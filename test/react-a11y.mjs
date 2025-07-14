@@ -11,7 +11,7 @@ export default {
       jsx: true,
     },
   }, */
-
+  name: "eslint-plugin-jsx-a11y",
   plugins: {
     "jsx-a11y": jsxA11y
   },

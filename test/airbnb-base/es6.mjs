@@ -11,6 +11,7 @@ export default {
     }
   }, */
 
+  name: "es6",
   rules: {
     // enforces no braces where they can be omitted
     // https://eslint.org/docs/rules/arrow-body-style
