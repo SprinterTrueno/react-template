@@ -1,9 +1,6 @@
 import globals from "globals";
 
 export default {
-  /* env: {
-    node: true
-  }, */
   name: "node",
   languageOptions: { globals: globals.node },
   rules: {

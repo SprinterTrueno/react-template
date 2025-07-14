@@ -1,41 +1,37 @@
-// const assign = require('object.assign');
-// const baseStyleRules = require('eslint-config-airbnb-base/rules/style').rules;
-
-// const dangleRules = baseStyleRules['no-underscore-dangle'];
-
-import react from "eslint-plugin-react";
 import globals from "globals";
+import react from "eslint-plugin-react";
+import baseStyleRules from "./airbnb-base/style.mjs";
+
+const dangleRules = baseStyleRules.rules["no-underscore-dangle"];
 
 export default {
-  /* plugins: [
-    'react',
-  ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-  }, */
   name: "eslint-plugin-react",
   plugins: {
     react
   },
   languageOptions: {
+    globals: {
+      ...globals.browser
+    },
     parserOptions: {
       ecmaFeatures: {
         jsx: true
       }
-    },
-    globals: {
-      ...globals.browser
     }
   },
 
   // View link below for react rules documentation
   // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
   rules: {
-    /* 'no-underscore-dangle': [dangleRules[0], assign({}, dangleRules[1], {
-      allow: dangleRules[1].allow.concat(['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']),
-    })], */
+    "no-underscore-dangle": [
+      dangleRules[0],
+      {
+        ...dangleRules[1],
+        allow: dangleRules[1].allow.concat([
+          "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"
+        ])
+      }
+    ],
 
     "class-methods-use-this": [
       "error",

@@ -1,4 +1,4 @@
-// const confusingBrowserGlobals = require('confusing-browser-globals');
+import confusingBrowserGlobals from "confusing-browser-globals";
 
 export default {
   name: "variables",
@@ -17,19 +17,19 @@ export default {
     "no-label-var": "error",
 
     // disallow specific globals
-    /* 'no-restricted-globals': [
-      'error',
+    "no-restricted-globals": [
+      "error",
       {
-        name: 'isFinite',
+        name: "isFinite",
         message:
-          'Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite',
+          "Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite"
       },
       {
-        name: 'isNaN',
+        name: "isNaN",
         message:
-          'Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan',
-      },
-    ].concat(confusingBrowserGlobals), */
+          "Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan"
+      }
+    ].concat(confusingBrowserGlobals),
 
     // disallow declaration of variables already declared in the outer scope
     "no-shadow": "error",

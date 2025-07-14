@@ -1,6 +1,3 @@
-// const semver = require('semver');
-// const eslintPkg = require('eslint/package.json');
-
 export default {
   name: "style",
   rules: {

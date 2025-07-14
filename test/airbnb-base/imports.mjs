@@ -1,32 +1,15 @@
+import globals from "globals";
 import importPlugin from "eslint-plugin-import";
 
 export default {
-  /* env: {
-    es6: true,
-  },
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.mjs', '.js', '.json'],
-      },
-    },
-    'import/extensions': [
-      '.js',
-      '.mjs',
-      '.jsx',
-    ],
-    'import/core-modules': [
-    ],
-    'import/ignore': [
-      'node_modules',
-      '\\.(coffee|scss|css|less|hbs|svg|json)$',
-    ],
-  }, */
   name: "imports",
+  languageOptions: {
+    globals: globals.es2015,
+    parserOptions: {
+      ecmaVersion: 6,
+      sourceType: "module"
+    }
+  },
   plugins: {
     import: importPlugin
   },

@@ -10,10 +10,11 @@ import strict from "./strict.mjs";
 
 export default tseslint.config({
   name: "eslint-config-airbnb-base",
-  extends: [bestPractices, errors, node, style, variables, es6, imports, strict]
-  /* parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
+  languageOptions: {
+    parserOptions: {
+      ecmaVersion: 2018,
+      sourceType: "module"
+    }
   },
-  rules: {}, */
+  extends: [bestPractices, errors, node, style, variables, es6, imports, strict]
 });

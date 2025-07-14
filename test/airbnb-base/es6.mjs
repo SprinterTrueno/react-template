@@ -1,17 +1,18 @@
-export default {
-  /* env: {
-    es6: true
-  },
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: {
-      generators: false,
-      objectLiteralDuplicateProperties: false
-    }
-  }, */
+import globals from "globals";
 
+export default {
   name: "es6",
+  languageOptions: {
+    globals: globals.es2015,
+    parserOptions: {
+      ecmaVersion: 6,
+      sourceType: "module",
+      ecmaFeatures: {
+        generators: false,
+        objectLiteralDuplicateProperties: false
+      }
+    }
+  },
   rules: {
     // enforces no braces where they can be omitted
     // https://eslint.org/docs/rules/arrow-body-style
