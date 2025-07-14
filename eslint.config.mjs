@@ -1,22 +1,10 @@
-// import { defineConfig, globalIgnores } from 'eslint/config';
-// import js from "@eslint/js";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-// import bestPractices from './test/airbnb-base/best-practices.mjs';
-// import errors from './test/airbnb-base/errors.mjs';
-// import node from './test/airbnb-base/node.mjs';
-// import style from './test/airbnb-base/style.mjs';
-// import variables from './test/airbnb-base/variables.mjs';
-// import es6 from './test/airbnb-base/es6.mjs';
-// import imports from './test/airbnb-base/imports.mjs';
-// import strict from './test/airbnb-base/strict.mjs';
 import airbnbBase from "./test/airbnb-base/index.mjs";
 import react from "./test/react.mjs";
 import reactA11y from "./test/react-a11y.mjs";
 import reactHooks from "eslint-plugin-react-hooks";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
-
-// console.log(bestPractices);
 
 export default tseslint.config(
   {
@@ -27,19 +15,8 @@ export default tseslint.config(
   react,
   reactA11y,
   reactHooks.configs["recommended-latest"],
-  // bestPractices,
-  // errors,
-  // node,
-  // style,
-  // variables,
-  // es6,
-  // imports,
-  // strict,
-
-  // reactPlugin.configs.flat.recommended,
   tseslint.configs.strict,
   eslintPluginPrettierRecommended,
-  // globalIgnores(['src/react-app-env.d.ts']),
   {
     ignores: ["src/react-app-env.d.ts"]
   },

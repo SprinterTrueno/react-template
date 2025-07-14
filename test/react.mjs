@@ -36,10 +36,6 @@ export default {
       allow: dangleRules[1].allow.concat(['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']),
     })], */
 
-    // Specify whether double or single quotes should be used in JSX attributes
-    // https://eslint.org/docs/rules/jsx-quotes
-    "jsx-quotes": ["error", "prefer-double"],
-
     "class-methods-use-this": [
       "error",
       {

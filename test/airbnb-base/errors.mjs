@@ -75,9 +75,6 @@ export default {
       }
     ],
 
-    // disallow unnecessary semicolons
-    "no-extra-semi": "error",
-
     // disallow overwriting functions written as function declarations
     "no-func-assign": "error",
 
