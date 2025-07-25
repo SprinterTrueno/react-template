@@ -6,6 +6,7 @@ import eslintConfigAirbnb from "./test/index.mjs";
 
 export default tseslint.config(
   {
+    name: "languageOptions",
     languageOptions: { globals: globals.browser }
   },
   eslintConfigAirbnb,
@@ -13,9 +14,11 @@ export default tseslint.config(
   tseslint.configs.strict,
   eslintPluginPrettierRecommended,
   {
+    name: "ignores",
     ignores: ["src/react-app-env.d.ts"]
   },
   {
+    name: "settings",
     settings: {
       "import/resolver": {
         webpack: {
@@ -27,7 +30,10 @@ export default tseslint.config(
           config: "webpack.config.js"
         }
       }
-    },
+    }
+  },
+  {
+    name: "rules",
     rules: {
       "import/extensions": [
         "error",
@@ -75,6 +81,7 @@ export default tseslint.config(
     }
   },
   {
+    name: "overrides",
     files: ["*.js"],
     rules: {
       "@typescript-eslint/no-require-imports": "off"
