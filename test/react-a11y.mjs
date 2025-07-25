@@ -1,9 +1,11 @@
 import jsxA11y from "eslint-plugin-jsx-a11y";
+import reactPlugin from "eslint-plugin-react";
 
 export default {
   name: "eslint-plugin-jsx-a11y",
   plugins: {
-    "jsx-a11y": jsxA11y
+    "jsx-a11y": jsxA11y,
+    react: reactPlugin
   },
   languageOptions: {
     parserOptions: {
