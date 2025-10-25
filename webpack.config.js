@@ -171,7 +171,33 @@ module.exports = {
     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
     splitChunks: {
       chunks: "all",
-      name: "vendors"
+      cacheGroups: {
+        react: {
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          name: "react-vendor",
+          chunks: "all"
+        },
+        "react-router": {
+          test: /[\\/]node_modules[\\/](react-router)[\\/]/,
+          name: "react-router-vendor",
+          chunks: "all"
+        },
+        antd: {
+          test: /[\\/]node_modules[\\/](antd)[\\/]/,
+          name: "antd-vendor",
+          chunks: "all"
+        },
+        "@ant-design": {
+          test: /[\\/]node_modules[\\/](@ant-design)[\\/]/,
+          name: "@ant-design-vendor",
+          chunks: "all"
+        },
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all"
+        }
+      }
     }
   }
 };
