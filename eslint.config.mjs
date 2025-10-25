@@ -52,7 +52,8 @@ export default tseslint.config(
             ...importsRules.rules["import/no-extraneous-dependencies"][1]
               .devDependencies,
             "eslint.config.mjs",
-            "eslint-config-airbnb/**"
+            "eslint-config-airbnb/**",
+            "**/webpack.analyze.js"
           ],
           optionalDependencies: false
         }
