@@ -11,7 +11,7 @@ export default tseslint.config(
     languageOptions: { globals: globals.browser }
   },
   eslintConfigAirbnb,
-  reactHooks.configs["recommended-latest"],
+  reactHooks.configs.flat.recommended,
   tseslint.configs.strict,
   eslintPluginPrettierRecommended,
   {
