@@ -1,10 +1,19 @@
-import { createContext, Dispatch, ReactNode, useContext } from "react";
+import { createContext, Dispatch, useContext } from "react";
 import { useImmerReducer } from "use-immer";
-import { App, AppAction } from "@/types/app";
+import { ProviderProps } from "@/types";
 
-interface AppContextProps {
-  children: ReactNode;
+export interface App {
+  name: string;
+  version: string;
+  description: string;
+  author: string;
 }
+
+export type AppAction =
+  | { type: "editName"; payload: string }
+  | { type: "editVersion"; payload: string }
+  | { type: "editDescription"; payload: string }
+  | { type: "editAuthor"; payload: string };
 
 const initialState: App = {
   name: "React App",
@@ -13,8 +22,10 @@ const initialState: App = {
   author: "war3_th000"
 };
 
-const AppContext = createContext<App>(null);
-const AppDispatchContext = createContext<Dispatch<AppAction>>(null);
+const AppContext = createContext<App | undefined>(undefined);
+const AppDispatchContext = createContext<Dispatch<AppAction> | undefined>(
+  undefined
+);
 
 const appReducer = (draft: App, action: AppAction) => {
   switch (action.type) {
@@ -36,7 +47,7 @@ const appReducer = (draft: App, action: AppAction) => {
   }
 };
 
-export const AppProvider = (props: AppContextProps) => {
+export const AppProvider = (props: ProviderProps) => {
   const { children } = props;
 
   const [state, dispatch] = useImmerReducer(appReducer, initialState);
@@ -49,9 +60,17 @@ export const AppProvider = (props: AppContextProps) => {
 };
 
 export const useApp = () => {
-  return useContext(AppContext);
+  const context = useContext(AppContext);
+  if (context === undefined) {
+    throw new Error("useApp must be used within an AppProvider");
+  }
+  return context;
 };
 
 export const useAppDispatch = () => {
-  return useContext(AppDispatchContext);
+  const context = useContext(AppDispatchContext);
+  if (context === undefined) {
+    throw new Error("useAppDispatch must be used within an AppProvider");
+  }
+  return context;
 };

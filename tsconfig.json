@@ -5,6 +5,8 @@
 
 {
   "compilerOptions": {
+    // 开启严格模式，包含所有严格类型检查选项。
+    "strict": true,
     // 允许从没有设置默认导出的模块中默认导入，仅影响类型检查，并不会影响编译后的代码输出。
     // "allowSyntheticDefaultImports": true,
     // 指定用于解析非相对模块名称的基本目录。

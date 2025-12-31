@@ -344,7 +344,7 @@ class Request {
   ): Promise<T> {
     // 上传文件时不设置 Content-Type，让浏览器自动设置
     const { headers, ...restOptions } = options || {};
-    const finalHeaders = { ...headers };
+    const finalHeaders = { ...(headers || {}) } as Record<string, string>;
     delete finalHeaders["Content-Type"];
 
     return this.request<T>(url, {

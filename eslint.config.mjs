@@ -36,6 +36,13 @@ export default tseslint.config(
   {
     name: "rules",
     rules: {
+      // 仅允许 console.error 用于错误日志，其他 console 方法会触发警告。
+      "no-console": [
+        "warn",
+        {
+          allow: ["error"]
+        }
+      ],
       // 允许修改函数参数 draft。
       "no-param-reassign": [
         "error",

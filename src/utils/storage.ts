@@ -1,14 +1,17 @@
 import { message } from "antd";
 
-export const getLocalStorage = <T>(
+export const getLocalStorage = <T = unknown>(
   key: string,
-  defaultValue: T | null = null
-): T | null => {
+  defaultValue?: T
+): T | undefined => {
   try {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : defaultValue;
   } catch (error) {
-    message.error("Error reading from local storage：", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "读取本地存储失败";
+    message.error(errorMessage);
+    console.error("Error reading from local storage:", error);
     return defaultValue;
   }
 };
@@ -18,7 +21,10 @@ export const setLocalStorage = <T>(key: string, value: T): void => {
     const serializedValue = JSON.stringify(value);
     localStorage.setItem(key, serializedValue);
   } catch (error) {
-    message.error("Error writing to local storage：", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "写入本地存储失败";
+    message.error(errorMessage);
+    console.error("Error writing to local storage:", error);
   }
 };
 
@@ -38,7 +44,10 @@ export const getSessionStorage = <T>(
     const item = sessionStorage.getItem(key);
     return item ? JSON.parse(item) : defaultValue;
   } catch (error) {
-    message.error("Error reading from session storage：", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "读取会话存储失败";
+    message.error(errorMessage);
+    console.error("Error reading from session storage:", error);
     return defaultValue;
   }
 };
@@ -48,7 +57,10 @@ export const setSessionStorage = <T>(key: string, value: T): void => {
     const serializedValue = JSON.stringify(value);
     sessionStorage.setItem(key, serializedValue);
   } catch (error) {
-    message.error("Error writing to session storage：", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "写入会话存储失败";
+    message.error(errorMessage);
+    console.error("Error writing to session storage:", error);
   }
 };
 
