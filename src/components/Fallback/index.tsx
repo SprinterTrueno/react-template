@@ -1,8 +1,5 @@
 import { useNavigate, useRouteError } from "react-router";
-import { Button, Result, Typography } from "antd";
-import styles from "./index.module.less";
-
-const { Paragraph, Text } = Typography;
+import { Button, Result } from "antd";
 
 const Fallback = () => {
   const error = useRouteError() as Error;
@@ -12,7 +9,7 @@ const Fallback = () => {
     <Result
       status="error"
       title="Application Error"
-      subTitle={error.message}
+      subTitle={error.message || "Something went wrong"}
       extra={[
         <Button key="try-again" type="primary" onClick={() => navigate(0)}>
           Try Again
@@ -24,14 +21,12 @@ const Fallback = () => {
           Back Home
         </Button>
       ]}
-    >
-      <Paragraph>
-        <Text className={styles.errorStackTitle}>
-          The error stack contains the following technical details:
-        </Text>
-      </Paragraph>
-      <Paragraph>{error.stack}</Paragraph>
-    </Result>
+      styles={{
+        root: {
+          marginTop: "20vh"
+        }
+      }}
+    />
   );
 };
 
