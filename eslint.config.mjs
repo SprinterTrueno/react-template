@@ -1,18 +1,19 @@
-import tseslint from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 import globals from "globals";
+import tseslint from "typescript-eslint";
 import reactHooks from "eslint-plugin-react-hooks";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import eslintConfigAirbnb from "./eslint-config-airbnb/index.mjs";
 import importsRules from "./eslint-config-airbnb/eslint-config-airbnb-base/imports.mjs";
 
-export default tseslint.config(
+export default defineConfig([
   {
     name: "languageOptions",
     languageOptions: { globals: globals.browser }
   },
-  eslintConfigAirbnb,
+  ...eslintConfigAirbnb,
   reactHooks.configs.flat.recommended,
-  tseslint.configs.strict,
+  ...tseslint.configs.strict,
   eslintPluginPrettierRecommended,
   {
     name: "ignores",
@@ -102,4 +103,4 @@ export default tseslint.config(
       "@typescript-eslint/no-require-imports": "off"
     }
   }
-);
+]);
