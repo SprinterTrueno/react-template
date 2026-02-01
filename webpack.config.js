@@ -46,6 +46,7 @@ module.exports = {
                 ["@babel/preset-react", { runtime: "automatic" }]
               ],
               plugins: [
+                "babel-plugin-react-compiler",
                 DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
               ].filter(Boolean)
             }
@@ -72,6 +73,7 @@ module.exports = {
                 "@babel/preset-typescript"
               ],
               plugins: [
+                "babel-plugin-react-compiler",
                 DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
               ].filter(Boolean)
             }

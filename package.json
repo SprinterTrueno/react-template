@@ -33,6 +33,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "babel-loader": "^10.0.0",
+    "babel-plugin-react-compiler": "^1.0.0",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "confusing-browser-globals": "^1.0.11",
     "cross-env": "^10.1.0",
