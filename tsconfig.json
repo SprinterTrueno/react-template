@@ -5,23 +5,49 @@
 
 {
   "compilerOptions": {
-    // 开启严格模式，包含所有严格类型检查选项。
+    // ========== 严格模式 ==========
+    // 开启严格模式，包含所有严格类型检查选项
     "strict": true,
-    // 允许从没有设置默认导出的模块中默认导入，仅影响类型检查，并不会影响编译后的代码输出。
-    // "allowSyntheticDefaultImports": true,
-    // 指定用于解析非相对模块名称的基本目录。
+
+    // ========== 模块解析 ==========
+    // 指定用于解析非相对模块名称的基本目录
     "baseUrl": ".",
-    // 控制 JSX 在 JavaScript 文件中的输出方式，这只影响 .tsx 文件的 JS 文件输出。
-    // react17 以下只能写 react，react17 以上可以写 react 或 react-jsx。
-    // react：将 JSX 改为等价的对 React.createElement 的调用并生成 js 文件。
-    // react-jsx：将 JSX 改为 __jsx 调用并生成 js 文件。详情看上方的参考资料：介绍全新的 JSX 转换。
-    // 由于不用 tsc，所以写哪个都可以。
-    "jsx": "react-jsx",
-    // 指定一组条目，将模块导入重新映射到相对于 baseUrl 路径的配置。
+    // 指定一组条目，将模块导入重新映射到相对于 baseUrl 路径的配置
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    // 模块解析策略：bundler 模式（TypeScript 5.0+）
+    // 专为现代打包工具（webpack/vite/esbuild）设计，让 TypeScript 的类型检查与打包工具行为保持一致
+    // 核心特性：支持无扩展名导入、package.json exports 字段、TypeScript 文件直接导入
+    // 适用场景：使用打包工具的前端项目（React/Vue/Angular 等）
+    "moduleResolution": "bundler",
+
+    // ========== JSX 配置 ==========
+    // 控制 JSX 在 JavaScript 文件中的输出方式，这只影响 .tsx 文件的 JS 文件输出
+    // react 17 以下只能写 react，react 17 以上可以写 react 或 react-jsx
+    // react：将 JSX 改为等价的对 React.createElement 的调用并生成 js 文件
+    // react-jsx：将 JSX 改为 __jsx 调用并生成 js 文件，同时不需要在每个文件中 import React。详情看上方的参考资料：介绍全新的 JSX 转换
+    // 由于不用 tsc，所以写哪个都可以
+    "jsx": "react-jsx",
+
+    // ========== 类型检查增强 ==========
+    // 跳过 .d.ts 类型声明文件的类型检查，大幅提升 IDE 性能（2-5 倍）
+    // 跳过 node_modules 和项目中的所有 .d.ts 文件，几乎所有现代项目都启用此选项
+    "skipLibCheck": true,
+
+    // 允许从没有默认导出的模块中使用默认导入语法（纯类型检查选项）
+    // 由于我们使用 Babel 编译而不是 tsc，这个选项让 IDE 的类型检查能够通过
+    // 实际的模块导入由 Babel 和 Webpack 处理
+    "allowSyntheticDefaultImports": true,
+
+    // ========== 输出配置（影响 IDE 的类型检查和智能提示）==========
+    // 编译目标：ES2024（TypeScript 当前支持的最新版本）
+    // 虽然我们用 Babel 编译，但这影响 IDE 的类型检查和智能提示
+    "target": "ES2024",
+
+    // 不允许编译 JavaScript 文件（保持类型安全）
+    "allowJs": false
   },
-  // 指定要包含在程序中的文件名或模式的数组。这些文件名是相对于包含该文件的目录解析的。
+  // 指定要包含在程序中的文件名或模式的数组，这些文件名是相对于包含该文件的目录解析的
   "include": ["src"]
 }
