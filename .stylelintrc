@@ -1,6 +1,8 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-clean-order"],
-  "rules": {
-    "declaration-property-value-no-unknown": null
-  }
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-css-modules",
+    "stylelint-config-clean-order"
+  ],
+  "rules": {}
 }

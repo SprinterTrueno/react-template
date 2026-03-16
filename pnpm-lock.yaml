@@ -156,6 +156,9 @@ importers:
       stylelint-config-clean-order:
         specifier: ^8.0.0
         version: 8.0.0(stylelint-order@7.0.1(stylelint@17.1.0(typescript@5.9.3)))(stylelint@17.1.0(typescript@5.9.3))
+      stylelint-config-css-modules:
+        specifier: ^4.6.0
+        version: 4.6.0(stylelint@17.1.0(typescript@5.9.3))
       stylelint-config-standard:
         specifier: ^40.0.0
         version: 40.0.0(stylelint@17.1.0(typescript@5.9.3))
@@ -3412,6 +3415,9 @@ packages:
   mdn-data@2.12.2:
     resolution: {integrity: sha512-IEn+pegP1aManZuckezWCO+XZQDplx1366JoVhTpMpBB1sPey/SbveZQUosKiKiGYjg1wH4pMlNgXbCiYgihQA==}
 
+  mdn-data@2.27.1:
+    resolution: {integrity: sha512-9Yubnt3e8A0OKwxYSXyhLymGW4sCufcLG6VdiDdUGVkPhpqLxlvP5vl1983gQjJl3tqbrM731mjaZaP68AgosQ==}
+
   media-typer@0.3.0:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
@@ -3766,6 +3772,9 @@ packages:
       webpack:
         optional: true
 
+  postcss-media-query-parser@0.2.3:
+    resolution: {integrity: sha512-3sOlxmbKcSHMjlUXQZKQ06jOswE7oVkXPxmZdoB1r5l0q6gTFTQSHxNxOrCccElbW7dxNytifNEo8qidX2Vsig==}
+
   postcss-merge-longhand@7.0.5:
     resolution: {integrity: sha512-Kpu5v4Ys6QI59FxmxtNB/iHUVDn9Y9sYw66D6+SZoIk4QTz1prC4aYkhIESu+ieG1iylod1f8MILMs1Em3mmIw==}
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
@@ -3900,6 +3909,9 @@ packages:
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
+
+  postcss-resolve-nested-selector@0.1.6:
+    resolution: {integrity: sha512-0sglIs9Wmkzbr8lQwEyIzlDOOC9bGmfVKcJTaxv3vMmd3uo4o4DerC3En0bnmgceeql9BfC8hRkp7cg0fjdVqw==}
 
   postcss-safe-parser@7.0.1:
     resolution: {integrity: sha512-0AioNCJZ2DPYz5ABT6bddIqlhgwhpHZ/l65YAYo0BCIn0xiDpsnTHz0gnoTGk0OXZW0JRs+cDwL8u/teRdz+8A==}
@@ -4397,6 +4409,11 @@ packages:
       stylelint: '>=16'
       stylelint-order: '>=6'
 
+  stylelint-config-css-modules@4.6.0:
+    resolution: {integrity: sha512-LIgfzNmpiwf/eDxQva2g1mj+mqDpvP1XwOKJC7DSWY/iCQAZdIKnY42jbXuY8thcFN4yM/uF1xfCyfd7fJKh6w==}
+    peerDependencies:
+      stylelint: ^14.5.1 || ^15.0.0 || ^16.0.0 || ^17.0.0
+
   stylelint-config-recommended@18.0.0:
     resolution: {integrity: sha512-mxgT2XY6YZ3HWWe3Di8umG6aBmWmHTblTgu/f10rqFXnyWxjKWwNdjSWkgkwCtxIKnqjSJzvFmPT5yabVIRxZg==}
     engines: {node: '>=20.19.0'}
@@ -4414,6 +4431,12 @@ packages:
     engines: {node: '>=20.19.0'}
     peerDependencies:
       stylelint: ^16.18.0 || ^17.0.0
+
+  stylelint-scss@7.0.0:
+    resolution: {integrity: sha512-H88kCC+6Vtzj76NsC8rv6x/LW8slBzIbyeSjsKVlS+4qaEJoDrcJR4L+8JdrR2ORdTscrBzYWiiT2jq6leYR1Q==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      stylelint: ^16.8.2 || ^17.0.0
 
   stylelint@17.1.0:
     resolution: {integrity: sha512-+cUX1FxkkbLX5qJRAPapUv/+v+YU3pGbWu+pHVqTXpiY0mYh3Dxfxa0bLBtVtYgOC8hIWIyX2H/3Y3LWlAevDg==}
@@ -8661,6 +8684,9 @@ snapshots:
 
   mdn-data@2.12.2: {}
 
+  mdn-data@2.27.1:
+    optional: true
+
   media-typer@0.3.0: {}
 
   memfs@4.56.10(tslib@2.8.1):
@@ -8988,6 +9014,9 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
+  postcss-media-query-parser@0.2.3:
+    optional: true
+
   postcss-merge-longhand@7.0.5(postcss@8.5.6):
     dependencies:
       postcss: 8.5.6
@@ -9113,6 +9142,9 @@ snapshots:
     dependencies:
       postcss: 8.5.6
       postcss-value-parser: 4.2.0
+
+  postcss-resolve-nested-selector@0.1.6:
+    optional: true
 
   postcss-safe-parser@7.0.1(postcss@8.5.6):
     dependencies:
@@ -9687,6 +9719,12 @@ snapshots:
       stylelint: 17.1.0(typescript@5.9.3)
       stylelint-order: 7.0.1(stylelint@17.1.0(typescript@5.9.3))
 
+  stylelint-config-css-modules@4.6.0(stylelint@17.1.0(typescript@5.9.3)):
+    dependencies:
+      stylelint: 17.1.0(typescript@5.9.3)
+    optionalDependencies:
+      stylelint-scss: 7.0.0(stylelint@17.1.0(typescript@5.9.3))
+
   stylelint-config-recommended@18.0.0(stylelint@17.1.0(typescript@5.9.3)):
     dependencies:
       stylelint: 17.1.0(typescript@5.9.3)
@@ -9701,6 +9739,19 @@ snapshots:
       postcss: 8.5.6
       postcss-sorting: 9.1.0(postcss@8.5.6)
       stylelint: 17.1.0(typescript@5.9.3)
+
+  stylelint-scss@7.0.0(stylelint@17.1.0(typescript@5.9.3)):
+    dependencies:
+      css-tree: 3.1.0
+      is-plain-object: 5.0.0
+      known-css-properties: 0.37.0
+      mdn-data: 2.27.1
+      postcss-media-query-parser: 0.2.3
+      postcss-resolve-nested-selector: 0.1.6
+      postcss-selector-parser: 7.1.1
+      postcss-value-parser: 4.2.0
+      stylelint: 17.1.0(typescript@5.9.3)
+    optional: true
 
   stylelint@17.1.0(typescript@5.9.3):
     dependencies:
