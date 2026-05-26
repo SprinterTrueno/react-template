@@ -1,5 +1,6 @@
 const path = require("path");
-const { IgnorePlugin } = require("webpack");
+const { IgnorePlugin, DefinePlugin } = require("webpack");
+const dotenv = require("dotenv");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
@@ -9,9 +10,19 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 const { NODE_ENV } = process.env;
 
+// 读取对应环境的 .env 文件
+const envFile = dotenv.config({ path: `.env.${NODE_ENV}` }).parsed || {};
+
 const DEVELOPMENT_ENV = NODE_ENV === "development";
 const PRODUCTION_ENV = NODE_ENV === "production";
 const PORT = 8080;
+
+// 将 REACT_APP_ 开头的环境变量注入到代码中
+const envDefines = Object.fromEntries(
+  Object.entries(envFile)
+    .filter(([key]) => key.startsWith("REACT_APP_"))
+    .map(([key, value]) => [`process.env.${key}`, JSON.stringify(value)])
+);
 
 module.exports = {
   mode: NODE_ENV,
@@ -26,44 +37,7 @@ module.exports = {
       {
         oneOf: [
           {
-            test: /\.js$/i,
-            loader: "babel-loader",
-            include: /src/,
-            options: {
-              presets: ["@babel/preset-env"],
-              plugins: [
-                DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
-              ].filter(Boolean)
-            }
-          },
-          {
-            test: /\.jsx$/i,
-            loader: "babel-loader",
-            include: /src/,
-            options: {
-              presets: [
-                "@babel/preset-env",
-                ["@babel/preset-react", { runtime: "automatic" }]
-              ],
-              plugins: [
-                "babel-plugin-react-compiler",
-                DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
-              ].filter(Boolean)
-            }
-          },
-          {
-            test: /\.ts$/i,
-            loader: "babel-loader",
-            include: /src/,
-            options: {
-              presets: ["@babel/preset-env", "@babel/preset-typescript"],
-              plugins: [
-                DEVELOPMENT_ENV && require.resolve("react-refresh/babel")
-              ].filter(Boolean)
-            }
-          },
-          {
-            test: /\.tsx$/i,
+            test: /\.[jt]sx?$/i,
             loader: "babel-loader",
             include: /src/,
             options: {
@@ -141,6 +115,7 @@ module.exports = {
     static: false
   },
   plugins: [
+    new DefinePlugin(envDefines),
     new IgnorePlugin({
       resourceRegExp: /^\.\/locale$/,
       contextRegExp: /dayjs$/
@@ -185,13 +160,8 @@ module.exports = {
           chunks: "all"
         },
         antd: {
-          test: /[\\/]node_modules[\\/](antd)[\\/]/,
+          test: /[\\/]node_modules[\\/](.pnpm[\\/].*)?[\\/]?(antd|@ant-design|rc-.+)[\\/]/,
           name: "antd-vendor",
-          chunks: "all"
-        },
-        "@ant-design": {
-          test: /[\\/]node_modules[\\/](@ant-design)[\\/]/,
-          name: "@ant-design-vendor",
           chunks: "all"
         },
         vendors: {

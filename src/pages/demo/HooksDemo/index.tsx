@@ -3,10 +3,6 @@ import {
   DebounceDemo,
   LocalStorageDemo,
   RequestDemo,
-  CacheDemo,
-  RetryDemo,
-  MutationDemo,
-  CRUDDemo,
   ToggleDemo,
   ThrottleDemo,
   IntervalDemo,
@@ -34,10 +30,6 @@ const HooksDemo = () => {
         <CopyToClipboardDemo />
         <LocalStorageDemo />
         <RequestDemo />
-        <CacheDemo />
-        <RetryDemo />
-        <MutationDemo />
-        <CRUDDemo />
       </Space>
     </div>
   );

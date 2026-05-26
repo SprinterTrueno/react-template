@@ -10,11 +10,9 @@
     "strict": true,
 
     // ========== 模块解析 ==========
-    // 指定用于解析非相对模块名称的基本目录
-    "baseUrl": ".",
-    // 指定一组条目，将模块导入重新映射到相对于 baseUrl 路径的配置
+    // 指定一组条目，将模块导入重新映射到相对路径的配置
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
     // 模块解析策略：bundler 模式（TypeScript 5.0+）
     // 专为现代打包工具（webpack/vite/esbuild）设计，让 TypeScript 的类型检查与打包工具行为保持一致
@@ -44,6 +42,9 @@
     // 编译目标：ES2024（TypeScript 当前支持的最新版本）
     // 虽然我们用 Babel 编译，但这影响 IDE 的类型检查和智能提示
     "target": "ES2024",
+
+    // 确保每个文件都能被独立编译（Babel 逐文件编译的安全网）
+    "isolatedModules": true,
 
     // 不允许编译 JavaScript 文件（保持类型安全）
     "allowJs": false

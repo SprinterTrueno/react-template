@@ -1,10 +1,4 @@
 export { useRequest } from "./useRequest";
-export {
-  clearAllCache,
-  clearCache,
-  invalidateQueries,
-  useRequestPro
-} from "./useRequestPro";
 export { default as useDebounce } from "./useDebounce";
 export { default as useLocalStorage } from "./useLocalStorage";
 export { useToggle } from "./useToggle";
